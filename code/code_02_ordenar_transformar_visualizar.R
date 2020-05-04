@@ -43,6 +43,10 @@ plot_encuestas_v2 <- plot_encuestas_v2 %+% labs(title = "Aprobación del Preside
 plot_encuestas_v2 <- plot_encuestas_v2 %+% theme_bw()
 plot_encuestas_v2
 
+#####Guardar graficos
+
+ggsave("plot/plot_encuestas_v2.png", plot = plot_encuestas_v2)
+
 #####Guardar los datos
 
 encuestas %>% write_rds("data/encuestas_pivot.rds")
