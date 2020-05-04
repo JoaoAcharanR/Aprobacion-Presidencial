@@ -40,6 +40,7 @@ plot_encuestas_v2 <- plot_encuestas_v2 %+% geom_text(aes(x=fecha,y=porcentaje,la
 plot_encuestas_v2 <- plot_encuestas_v2 %+% theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 8))
 plot_encuestas_v2 <- plot_encuestas_v2 %+% labs(title = "Aprobación del Presidente Piñera", subtitle = "% Aprobación de diversas encuestas",
                                                 caption = "Realizado por Joao Acharán")
+plot_encuestas_v2 <- plot_encuestas_v2 %+% theme_bw()
 plot_encuestas_v2
 
 #####Guardar los datos
