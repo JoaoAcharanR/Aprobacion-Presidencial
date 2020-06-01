@@ -32,20 +32,26 @@ plot_encuestas
 #Aprobación según empresa solo para Piñera
 encuestas <- encuestas %>% filter(presidente == "piñera")
 encuestas <- encuestas %>% filter(metrica == "apruebo")
-plot_encuestas_v2 <- encuestas %>% ggplot(aes(x=fecha,y=porcentaje,group=encuesta, color=encuesta))
-plot_encuestas_v2 <- plot_encuestas_v2 %+% geom_point()
-plot_encuestas_v2 <- plot_encuestas_v2 %+% geom_line()
+plot_encuestas_v2 <- encuestas %>% ggplot(aes(x=fecha,y=porcentaje,group=encuesta, fill=encuesta))
+plot_encuestas_v2 <- plot_encuestas_v2 %+% geom_point(aes(x=fecha,y=porcentaje,color=encuesta))
+plot_encuestas_v2 <- plot_encuestas_v2 %+% geom_line(aes(x=fecha,y=porcentaje,color=encuesta))
 plot_encuestas_v2 <- plot_encuestas_v2 %+% scale_y_continuous(limit = c(0,100))
-plot_encuestas_v2 <- plot_encuestas_v2 %+% geom_text(aes(x=fecha,y=porcentaje,label= paste(porcentaje)),vjust=-1,  size=3)
+plot_encuestas_v2 <- plot_encuestas_v2 %+% geom_text(aes(x=fecha,y=porcentaje, color = encuesta, label= paste(porcentaje)), vjust=-1,  size=3)
 plot_encuestas_v2 <- plot_encuestas_v2 %+% theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 8))
 plot_encuestas_v2 <- plot_encuestas_v2 %+% labs(title = "Aprobación del Presidente Piñera", subtitle = "% Aprobación de diversas encuestas",
                                                 caption = "Realizado por Joao Acharán")
 plot_encuestas_v2 <- plot_encuestas_v2 %+% theme_bw()
+plot_encuestas_v2 <- plot_encuestas_v2 %+% geom_vline(aes(xintercept=as.numeric(encuestas$fecha[15])), color = "red") 
+plot_encuestas_v2 <- plot_encuestas_v2 %+% annotate(geom = "text",x=as.Date("2019-11-01"),y=76, label= "Octubre 2019\nEstallido social", size = 3)
+plot_encuestas_v2 <- plot_encuestas_v2 %+% annotate(geom = "text",x=as.Date("2019-11-01"),y=83, label= sprintf("\U279E"), color = "red", size = 10)
+plot_encuestas_v2 <- plot_encuestas_v2 %+% geom_vline(aes(xintercept=as.numeric(encuestas$fecha[6])), color = "red") 
+plot_encuestas_v2 <- plot_encuestas_v2 %+% annotate(geom = "text",x=as.Date("2020-04-01"),y=76, label= "Marzo 2020\nCOVID-19", size = 3)
+plot_encuestas_v2 <- plot_encuestas_v2 %+% annotate(geom = "text",x=as.Date("2020-04-01"),y=83, label= sprintf("\U279E"), color = "red", size = 10)
 plot_encuestas_v2
 
 #####Guardar graficos
 
-ggsave("plot/plot_encuestas_v2.png", plot = plot_encuestas_v2)
+ggsave("plot/plot_encuestas_v3.png", plot = plot_encuestas_v2, width = 13.5, height = 5)
 
 #####Guardar los datos
 
