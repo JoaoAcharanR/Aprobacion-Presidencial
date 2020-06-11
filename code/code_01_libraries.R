@@ -6,6 +6,7 @@ library(readxl)
 library(lubridate)
 library(ggplot2)
 library(tidyr)
+library(ggrepel)
 
 #####Cargar datos#####
 
