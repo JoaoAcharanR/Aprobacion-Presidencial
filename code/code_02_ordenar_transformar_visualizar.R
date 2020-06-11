@@ -36,7 +36,7 @@ plot_encuestas_v2 <- encuestas %>% ggplot(aes(x=fecha,y=porcentaje,group=encuest
 plot_encuestas_v2 <- plot_encuestas_v2 %+% geom_point(aes(x=fecha,y=porcentaje,color=encuesta))
 plot_encuestas_v2 <- plot_encuestas_v2 %+% geom_line(aes(x=fecha,y=porcentaje,color=encuesta))
 plot_encuestas_v2 <- plot_encuestas_v2 %+% scale_y_continuous(limit = c(0,100))
-plot_encuestas_v2 <- plot_encuestas_v2 %+% geom_text(aes(x=fecha,y=porcentaje, color = encuesta, label= paste(porcentaje)), vjust=-1,  size=3)
+plot_encuestas_v2 <- plot_encuestas_v2 %+% geom_text_repel(aes(x=fecha,y=porcentaje, color = encuesta, label= paste(porcentaje)), vjust=-1,  size=3)
 plot_encuestas_v2 <- plot_encuestas_v2 %+% theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 8))
 plot_encuestas_v2 <- plot_encuestas_v2 %+% labs(title = "Aprobación del Presidente Piñera", subtitle = "% Aprobación de diversas encuestas",
                                                 caption = "Realizado por Joao Acharán")
@@ -51,7 +51,7 @@ plot_encuestas_v2
 
 #####Guardar graficos
 
-ggsave("plot/plot_encuestas_v3.png", plot = plot_encuestas_v2, width = 13.5, height = 5)
+ggsave("plot/plot_encuestas_v4.png", plot = plot_encuestas_v2, width = 13.5, height = 5)
 
 #####Guardar los datos
 
