@@ -51,7 +51,7 @@ plot_encuestas_v2
 
 #####Guardar graficos
 
-ggsave("plot/plot_encuestas_v4.png", plot = plot_encuestas_v2, width = 13.5, height = 5)
+ggsave("plot/plot_encuestas_v5.png", plot = plot_encuestas_v2, width = 13.5, height = 5)
 
 #####Guardar los datos
 
